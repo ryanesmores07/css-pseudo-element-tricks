@@ -59,6 +59,13 @@ const Practice = () => {
           </div>
         </div>
       </div>
+      <div className="content box-shadow">
+        <h3>Box Shadow</h3>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni modi
+          dolor nisi non quis, neque soluta impedit consequatur qui obcaecati!
+        </p>
+      </div>
     </Wrapper>
   );
 };
@@ -293,6 +300,37 @@ const Wrapper = styled.div`
         text-align: justify;
         color: white;
       }
+    }
+  }
+
+  .content {
+    box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.1);
+
+    transition: transform 250ms ease;
+  }
+  .box-shadow {
+    padding: 2rem;
+    margin: 2rem;
+    border: 1px solid black;
+    max-width: 100%;
+    width: 50%;
+    position: relative;
+
+    &:hover {
+      transform: translateY(-0.35em) scale(1.02);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      box-shadow: 0 0.75rem 2rem -0.5em rgba(0, 0, 0, 0.3);
+      transition: opacity 250ms ease;
+    }
+
+    &:hover::after {
+      opacity: 1;
     }
   }
 `;
