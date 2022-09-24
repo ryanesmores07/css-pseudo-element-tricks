@@ -66,6 +66,23 @@ const Practice = () => {
           dolor nisi non quis, neque soluta impedit consequatur qui obcaecati!
         </p>
       </div>
+      <div className="scale-effect">
+        <img src="//unsplash.it/300/300" alt="yawa" className="scale-image" />
+        <div className="scale-info">
+          <h3>Scale effect</h3>
+        </div>
+      </div>
+
+      <div className="fancy">
+        <a href="" className="fancy-link">
+          It works well with links
+        </a>{" "}
+        and even with{" "}
+        <a href="" className="fancy-link">
+          short ones
+        </a>{" "}
+        too
+      </div>
     </Wrapper>
   );
 };
@@ -331,6 +348,59 @@ const Wrapper = styled.div`
 
     &:hover::after {
       opacity: 1;
+    }
+  }
+
+  .scale-effect {
+    position: relative;
+    display: inline-block;
+
+    /* width: 20rem; */
+    background-color: red;
+    isolation: isolate;
+    overflow: hidden;
+
+    &:hover .scale-image {
+      transform: scale(1.3);
+    }
+
+    .scale-image {
+      max-width: 100%;
+      transform: scale(1.1);
+      /* width: 100%; */
+      object-fit: cover;
+      transition: transform 250ms ease-out;
+    }
+
+    .scale-info {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+    }
+  }
+
+  .fancy-link {
+    color: orangered;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scale(0);
+      transform-origin: right;
+      transition: transform 250ms ease-in;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+      transform-origin: left;
     }
   }
 `;
