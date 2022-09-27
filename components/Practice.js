@@ -4,7 +4,8 @@ import styled from "styled-components";
 const Practice = () => {
   return (
     <Wrapper>
-      <h1 className="intro">Here is a generic heading</h1>
+      <h1 className="intro">wHere is a generic heading</h1>
+      {/*  
       <div className="card-container">
         <div className="card">
           <img className="card-image" src="//unsplash.it/400/350" alt="" />
@@ -48,11 +49,6 @@ const Practice = () => {
           </div>
         </div>
         <div className="option card-gradient">
-          {/* <img
-            className="card-image_3"
-            src="//unsplash.it/391/300"
-            alt="a tree"
-          /> */}
           <div className="card-info">
             <h3 className="card-title">Card title</h3>
             <p className="card-body">Lorem ipsum dolor sit amet.</p>
@@ -72,7 +68,6 @@ const Practice = () => {
           <h3>Scale effect</h3>
         </div>
       </div>
-
       <div className="fancy">
         <a href="" className="fancy-link">
           It works well with links
@@ -82,6 +77,13 @@ const Practice = () => {
           short ones
         </a>{" "}
         too
+      </div>
+      */}
+      <div className="text-reveal">
+        <div className="card">
+          <h3 className="card__title">Lorem, ipsum dolor.</h3>
+          <p className="card__body">Lorem ipsum dolor sit amet.</p>
+        </div>
       </div>
     </Wrapper>
   );
@@ -401,6 +403,74 @@ const Wrapper = styled.div`
     &:hover::after {
       transform: scale(1);
       transform-origin: left;
+    }
+  }
+
+  .text-reveal {
+    .card {
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 50%;
+      color: white;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: left;
+      isolation: isolate;
+
+      &:hover .card__title::after,
+      &:hover .card__body::after {
+        transform: scaleX(1) scaleY(1);
+      }
+      &:hover .card__body {
+        color: #333;
+      }
+
+      .card__title {
+        position: relative;
+        z-index: 1;
+        padding: 0.5rem 0;
+        /* padding-right: 2rem; */
+        display: inline-block;
+        margin: 0;
+
+        &::after {
+          content: "";
+          z-index: -1;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: -2rem;
+          right: 0;
+          width: calc(100% + 4rem);
+          background-color: orange;
+          transform: scaleX(0.1);
+          /* transform: scaleX(1); */
+          transform-origin: left;
+          transition: transform 250ms ease-in;
+        }
+      }
+
+      .card__body {
+        margin: 0;
+        position: relative;
+        z-index: 1;
+        padding: 1rem 0;
+        display: block;
+        color: transparent;
+        transition: color 150ms 350ms;
+        &::after {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          background-color: #fff;
+          top: 0;
+          bottom: 0;
+          left: -1rem;
+          right: 0;
+          transform: scaleY(0);
+          transform-origin: top;
+          transition: transform 250ms ease-in 250ms;
+        }
+      }
     }
   }
 `;
